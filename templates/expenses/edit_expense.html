@@ -4,16 +4,18 @@
 
 <div class="container mt-4">
 
+
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{% url 'expensesapp' %}">Expenses</a></li>
-            <li class="breadcrumb-item active">Add Expense</li>
+            <li class="breadcrumb-item active">Edit Expense</li>
         </ol>
     </nav>
 
-    <form action="{% url 'add-expenses' %}" method="post">
-        {% include 'partials/_messages.html' %}
+
+    <form action="{% url 'edit-expenses' expense.id %}" method="post">
         {% csrf_token %}
+        {% include 'partials/_messages.html' %}
         <fieldset>
             <div class="form-group">
                 <label for="" class="form-label mt-4">Amount</label>
@@ -26,6 +28,7 @@
             <div class="form-group">
                 <label for="" class="form-label mt-4">Category</label>
                 <select class="form-select" name="category">
+                    <option selected name="category" value="{{values.category}}">{{values.category}}</option>
                     {% for category in categories %}
                     <option name="category" value="{{category.name}}">{{category.name}}</option>
                     {% endfor %}
@@ -33,13 +36,14 @@
             </div>
             <div class="form-group">
                 <label for="" class="form-label mt-4">Date of Expense</label>
-                <input type="date" class="form-control" name="expense_date">
+                <input type="date" value="{{values.date |date:'Y-m-d' }}" class="form-control" name="expense_date">
             </div>
-            <input type="submit" value="Submit" class="btn btn-primary mt-5">
+            <input type="submit" value="Update" class="btn btn-primary mt-5">
         </fieldset>
     </form>
 
 </div>
 
 {% endblock %}
+
 

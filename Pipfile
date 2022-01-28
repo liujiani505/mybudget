@@ -9,6 +9,10 @@ install = "*"
 psycopg2 = "*"
 django-heroku = "*"
 gunicorn = "*"
+validate-email = "*"
+six = "*"
+xlwt = "*"
+weasyprint = "*"
 
 [requires]
 python_version = "3.8"

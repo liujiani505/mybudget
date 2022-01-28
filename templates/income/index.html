@@ -8,24 +8,24 @@
         <div class="col-md-10">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="">Expenses</a></li>
-                    <li class="breadcrumb-item active">My Expenses</li>
+                    <li class="breadcrumb-item"><a href="">Income</a></li>
+                    <li class="breadcrumb-item active">My Income</li>
                 </ol>
             </nav>
         </div>
     
         <div class="col-md-2">
-            <a href="{% url 'add-expenses' %}" class="btn btn-primary btn-sm">Add Expense</a>
+            <a href="{% url 'add-incomes' %}" class="btn btn-primary btn-sm">Add Income</a>
         </div>
     </div>
 
-    {% if expenses.count %}
+    {% if income.count %}
     <table class="table table-hover mt-3">
         {% include 'partials/_messages.html' %}
         <thead>
             <tr>
                 <th scope="col">AMOUNT</th>
-                <th scope="col">CATEGORY</th>
+                <th scope="col">SOURCE</th>
                 <th scope="col">DESCRIPTION</th>
                 <th scope="col">DATE</th>
                 <th></th>
@@ -34,14 +34,14 @@
         </thead>
         
         <tbody>
-            {% for expense in page_obj %}
+            {% for income in page_obj %}
             <tr class="table-active">
-                <td>{{expense.amount}}</td>
-                <td>{{expense.category}}</td>
-                <td>{{expense.description}}</td>
-                <td>{{expense.date}}</td> 
-                <td><a href="{% url 'edit-expenses' expense.id %}" class="btn btn-outline-info btn-sm">Edit</a></td>
-                <td><a href="{% url 'delete-expenses' expense.id %}" class="btn btn-outline-danger btn-sm">Delete</a></td>
+                <td>{{income.amount}}</td>
+                <td>{{income.source}}</td>
+                <td>{{income.description}}</td>
+                <td>{{income.date}}</td> 
+                <td><a href="{% url 'edit-incomes' income.id %}" class="btn btn-outline-info btn-sm">Edit</a></td>
+                <td><a href="{% url 'delete-incomes' income.id %}" class="btn btn-outline-danger btn-sm">Delete</a></td>
             </tr>
             {% endfor %}
         </tbody>
@@ -64,17 +64,6 @@
             </ul>
     </div>
     {% endif %}
-
-    <div class="row">
-        <div class="col-md-5">
-            <a href="{% url 'export-excel' %}" class="btn btn-primary btn-sm m-1">Export Excel</a>
-            <a href="{% url 'export-csv' %}" class="btn btn-primary btn-sm m-1">Export CSV</a>
-        </div>
-        <div class="col-md-7">
-            
-        </div>
-    </div>
-
 </div>
 
 {% endblock content %}

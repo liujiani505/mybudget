@@ -1,9 +1,33 @@
 {% extends 'base_auth.html' %}
+{% load static %}
 
 {% block content %}
-    <div class="card">
-        <div class="card-body">
-            <h1>Login</h1>
+<div class="row">
+    <div class="col-md-5">
+        <div class="row g-0 overflow-hidden flex-md-row mb-4 h-md-250 position-relative mt-5 p-5">
+            <h5 class="pb-4">Login to your account</h5>
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                {% include 'partials/_messages.html' %}
+                <div class="form-group">
+                    <input type="text", name="username" id="usernameField" value="{{fieldValues.username}}" class="form-control form-control-sm" placeholder="Enter username">
+                </div><br/>
+                <div class="form-group">
+                    <input type="password", name="password" id="passwordField" class="form-control form-control-sm" placeholder="Enter password">
+                </div><br/>
+                <input type="submit" value="Login" class="btn btn-block btn-primary submit-btn" />
+            </form>
+            <p class="mt-2">Don't have an account? <a href="{% url 'register' %}">Register</a></p>
         </div>
     </div>
+    <div class="col-md-7">
+        <div class="row g-0 overflow-hidden flex-md-row h-md-250 position-relative mt-5">
+            {% load static %} 
+            <img src="{% static 'img/mybudget.png' %}"/>
+        </div>
+    </div>   
+</div>
+
+<script src="{% static 'js/register.js' %}"></script>
+
 {% endblock content %}
