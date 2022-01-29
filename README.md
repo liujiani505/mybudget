@@ -21,7 +21,7 @@ Mybudget is a budget tracker with full CRUD bulit with Django. Users can create/
 
 
 ## Future Enhancement
-Add expenses and income summary
+Add expenses and income summaries
 
 
 ## Deployment
