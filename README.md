@@ -1,4 +1,4 @@
-# Mybudget
+# MyBudget
 
 ## Overview
 
