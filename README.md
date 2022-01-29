@@ -24,5 +24,5 @@ Mybudget is a budget tracker with full CRUD bulit with Django. Users can create/
 Add expenses and income summary
 
 
-##Deployment
+## Deployment
 https://jl-mybudget.herokuapp.com/
